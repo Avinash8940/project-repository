@@ -1,0 +1,19 @@
+server:
+  port: 9000
+  
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761
+      
+spring:
+  application:
+    name: GATEWAY
+
+  cloud:
+    gateway:
+      routes:
+      - id: backendserver
+        uri: lb://BACKEND-SERVICE
+        predicates:
+        - Path=/**
